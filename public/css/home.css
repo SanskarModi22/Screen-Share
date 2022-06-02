@@ -5,7 +5,7 @@ body {
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: rgb(250, 235, 235);
+    background-color: rgb(250, 235, 235) !important;
     font-family: "Poppins", sans-serif !important;
 }
 
@@ -56,6 +56,11 @@ body {
 
 .dropdown-toggle::after {
     display: none !important;
+}
+
+.dropdown-menu {
+    border-radius: 1.25rem!important;
+    padding: 1rem !important;
 }
 
 .d-right-upper {
