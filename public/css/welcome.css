@@ -1,0 +1,65 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: #DC3644;
+    font-family: "Poppins", sans-serif;
+}
+
+.welcome-btn {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.welcome-left-text {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 6rem 2rem 0;
+}
+
+.welcome-left {
+    margin: 3rem 0 2rem 5rem;
+    align-items: center;
+}
+
+.welcome-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.welcome-size {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.welcome-subtitle {
+    font-weight: 200;
+}
+
+.welcome-img {
+    width: 80%;
+}
+
+@media (max-width:450px) {
+    .welcome-img {
+        width: 85%;
+        margin: 5rem 0 0 2rem;
+    }
+    .welcome-left {
+        margin: 0;
+    }
+    .welcome-left-text {
+        margin: 0;
+    }
+}
