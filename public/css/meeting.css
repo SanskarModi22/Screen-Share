@@ -321,6 +321,14 @@ button {
     .desktop-size {
         display: none;
     }
+    .end-card {
+        background-color: rgb(250, 235, 235);
+        width: 80%;
+        height: 30%;
+        z-index: 1;
+        position: absolute;
+        margin-right: 7rem;
+    }
     .join-btn-mobile {
         width: 95%;
         height: 10%;
