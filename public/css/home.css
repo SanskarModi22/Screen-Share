@@ -9,6 +9,11 @@ body {
     font-family: "Poppins", sans-serif !important;
 }
 
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
 .desktop-size {
     height: 100vh;
     width: 100vw;
@@ -52,6 +57,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
 }
 
 .dropdown-toggle::after {
