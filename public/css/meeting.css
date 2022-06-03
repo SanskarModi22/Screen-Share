@@ -212,6 +212,20 @@ button {
     border-radius: 0.75rem !important;
 }
 
+.end-btns {
+    width: 60%;
+    align-self: center;
+}
+
+.end-card {
+    background-color: rgb(250, 235, 235);
+    width: 30%;
+    height: 30%;
+    z-index: 1;
+    position: absolute;
+    margin-left: 30%;
+}
+
 .g-top {
     width: 100%;
     height: 65%;
