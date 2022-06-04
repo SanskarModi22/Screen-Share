@@ -1,25 +1,25 @@
 {
-  "name": "screen-share",
-  "version": "1.0.0",
-  "description": "This is a Screen Sharing application made using HTML,CSS,JS,JQuery,WebRTC,Socket.io,NodeJS",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SanskarModi22/Screen-Share.git"
-  },
-  "author": "Sanskar Modi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SanskarModi22/Screen-Share/issues"
-  },
-  "homepage": "https://github.com/SanskarModi22/Screen-Share#readme",
-  "dependencies": {
-    "express": "^4.18.1",
-    "nodemon": "^2.0.16",
-    "socket.io": "^4.5.1"
-  }
+    "name": "screen-share",
+    "version": "1.0.0",
+    "description": "This is a Screen Sharing application made using HTML,CSS,JS,JQuery,WebRTC,Socket.io,NodeJS",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SanskarModi22/Screen-Share.git"
+    },
+    "author": "Sanskar Modi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/SanskarModi22/Screen-Share/issues"
+    },
+    "homepage": "https://github.com/SanskarModi22/Screen-Share#readme",
+    "dependencies": {
+        "express": "^4.18.1",
+        "nodemon": "^2.0.16",
+        "socket.io": "^4.5.1"
+    }
 }
