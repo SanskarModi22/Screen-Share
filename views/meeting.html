@@ -13,6 +13,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="https://kit.fontawesome.com/84c4a0d090.js" crossorigin="anonymous"></script>
     <title>Document</title>
+    <script src="../public/js/jquery-3.4.1.min.js"></script>
+    <script src="../public/js/app.js"></script>
+    <script>
+        $(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            var meeting_id = urlParams.get('meetingID');
+            var user_name = urlParams.get('name');
+            console.log(user_name);
+            if (meeting_id == null) {
+                alert('Room id is missing');
+                var meetingUrl =
+                    window.location.origin + "/views/join.html";
+                window.location.replace(meetingUrl);
+                return;
+            } else if (user_name == null) {
+                alert('User name is missing');
+                var meetingUrl =
+                    window.location.origin + "/views/join.html" + "?meetingID=" + meeting_id;
+                window.location.replace(meetingUrl);
+                return;
+            }
+            $("#meetingContainer").show();
+
+            MyApp._init(user_id, meeting_id);
+        })
+    </script>
 </head>
 
 <body>
@@ -50,8 +76,8 @@
         >
           <div class="g-top text-light">
             <div class="top-remote-video-show-wrap d-flex video-show">
-              <div id="meetingContainer" style="flex-basis: 90%">
-                <div class="call-wrap" style="background-color: black">
+              <div id="meetingContainer" style="display:none;flex-basis: 90%">
+                <div class="call-wrap" style="background-color: black;">
                   <div
                     class="video-wrap"
                     id="divUsers"
