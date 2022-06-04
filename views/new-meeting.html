@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="https://kit.fontawesome.com/84c4a0d090.js" crossorigin="anonymous"></script>
+    <script src="../public/js/jquery-3.4.1.min.js"></script>
+    <script src="../public/js/new-meeting.js"></script>
     <title>Document</title>
 </head>
 
@@ -55,15 +57,15 @@
                 <div class="d-right-left ">
                     <h3 class="join-text " style="color:red">Start a Meeting</h3>
                     <div class="text-field">
-                        <input type="text" placeholder="Enter Name" style="border: none;" class="join-area">
+                        <input type="text" placeholder="Enter Name" style="border: none;" class="join-area enter-name">
                     </div>
                 </div>
                 <div class="d-right-right">
                     <img class="join-image" src="../public/images/Start Meeting Illustration2.png" />
                 </div>
             </div>
-            <div class="join-btn">
-                <a href="./meeting.html" class="btn btn-danger" style="font-size: 1rem;">Start a Meeting</a>
+            <div class="join-btn ">
+                <button class="btn btn-danger create-meeting" style="font-size: 1rem;">Start a Meeting</button>
             </div>
             <!-- <div class="d-right-lower">
                 <div class="d-right-left">
@@ -100,9 +102,9 @@
         <div class="mobile-middle">
 
             <div class="text-field-mobile">
-                <input type="text" placeholder="Enter Name" style="border: none;" class="join-area">
+                <input type="text" placeholder="Enter Name" style="border: none;" class="join-area join-name">
             </div>
-            <a href="./meeting.html" class="btn btn-danger mt-2 join-btn-mobile ms-3">Start a Meeting</a>
+            <button class="btn btn-danger mt-2 join-btn-mobile ms-3 create-meeting">Start a Meeting</button>
 
         </div>
         <div class="mobile-bottom">
@@ -111,6 +113,7 @@
             <div><i class="fa-solid fa-ellipsis fa-2x"></i></div>
         </div>
     </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 </body>
 
 </html>

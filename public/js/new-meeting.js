@@ -1,0 +1,16 @@
+$(function() {
+    $(document).on("click", ".create-meeting", function() {
+        var join_name = $(".enter-name").val();
+        if (join_name == "")
+            var join_mob_name = $(".join-name").val();
+        var eight_d_value = Math.floor(Math.random() * 100000000);
+        //Generating a random 8 digit number
+        if (join_name == "" && join_mob_name == "")
+            alert("Please Enter Your name");
+        else {
+            var meetingUrl =
+                window.location.origin + "/views/meeting.html" + "?meetingID=" + eight_d_value + "&name=" + join_name;
+            window.location.replace(meetingUrl);
+        }
+    });
+});

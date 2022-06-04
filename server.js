@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
 var app = express();
-var server = app.listen(3000, function() {
-    console.log("Listening on port 3000");
+var server = app.listen(4000, function() {
+    console.log("Listening on port 4000");
 });
 const fs = require("fs");
 const io = require("socket.io")(server, {
