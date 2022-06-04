@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="../public/js/jquery-3.4.1.min.js"></script>
+    <script src="../public/js/join-meeting.js"></script>
     <script src="https://kit.fontawesome.com/84c4a0d090.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -55,8 +57,8 @@
                 <div class="d-right-left ">
                     <h3 class="join-text " style="color:red">Join a Meeting</h3>
                     <div class="text-field">
-                        <input type="text" placeholder="Enter Meeting ID" style="border: none;color: red;" class="join-area meeting-area">
-                        <input type="text" placeholder="Enter Name" style="border: none;" class="join-area">
+                        <input type="text" placeholder="Enter Meeting ID" style="border: none;color: red;" class="join-area meeting-area enter-code">
+                        <input type="text" placeholder="Enter Name" style="border: none;" class="join-area enter-name">
                     </div>
                 </div>
                 <div class="d-right-right">
@@ -64,7 +66,7 @@
                 </div>
             </div>
             <div class="join-btn">
-                <a href="./meeting.html" class="btn btn-danger" style="font-size: 1rem;">Join a Meeting</a>
+                <button class="btn btn-danger join-action" style="font-size: 1rem;">Join a Meeting</button>
             </div>
             <!-- <div class="d-right-lower">
                 <div class="d-right-left">
