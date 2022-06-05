@@ -368,6 +368,7 @@ var MyApp = (function() {
                         meetingid: meeting_id,
                     });
                 }
+                //After socket connection our info will be sent to the server
             }
         });
         socket.on("inform_other_about_disconnected_user", function(data) {

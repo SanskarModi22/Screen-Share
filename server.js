@@ -17,20 +17,26 @@ io.on("connection", (socket) => {
         var other_users = userConnections.filter(
             (p) => p.meeting_id == data.meetingid
         );
+        //Other Users whose meeting id matches with the room meeting id
         userConnections.push({
             connectionId: socket.id,
             user_id: data.displayName,
             meeting_id: data.meetingid,
         });
+        //These are all the user connection which are happening on this server 4000. It contains my as well other's connection info.
         var userCount = userConnections.length;
         console.log(userCount);
+        //Kitne users hain abhi us room mein
         other_users.forEach((v) => {
             socket.to(v.connectionId).emit("inform_others_about_me", {
-                other_user_id: data.displayName,
-                connId: socket.id,
+                other_user_id: data.displayName, //Sending our name
+                connId: socket.id, //We are sending our socket connid 
                 userNumber: userCount,
             });
         });
+        //Baki jitne bhi users hain ham unko inform karenge ki ham bhi hain is room mein
+        //So we will send our information to their connection id
+        // ======================================================================
         socket.emit("inform_me_about_other_user", other_users);
     });
     //Informing me of other Users
