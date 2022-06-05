@@ -188,6 +188,7 @@ var AppProcess = (function() {
             removeMediaSenders(rtp_vid_senders);
         }
     }
+    // ********************************iceConfiguration*****************
     var iceConfiguration = {
         iceServers: [{
                 urls: "stun:stun.l.google.com:19302",
@@ -197,6 +198,8 @@ var AppProcess = (function() {
             },
         ],
     };
+    // user information like network IP address, computers, users information will be stored in this
+    // Information will be will be accessed by this particular connection object.
 
     async function setConnection(connid) {
         var connection = new RTCPeerConnection(iceConfiguration);
@@ -449,6 +452,7 @@ var MyApp = (function() {
         });
     }
 
+    // ***********************ADD USER*****************************
     function addUser(other_user_id, connId, userNum) {
         var newDivId = $("#otherTemplate").clone();
         newDivId = newDivId.attr("id", connId).addClass("other");
@@ -459,8 +463,13 @@ var MyApp = (function() {
         newDivId.find("audio").attr("id", "a_" + connId);
         newDivId.show();
         $("#divUsers").append(newDivId);
-        //In index.html there is a div with id #otherTemplate . This will show other users with the same meeting id in a grid form
-        //We are appending the other user in the #divUsers id in index.html
+        //In meeting.html there is a div with id #otherTemplate . This will show other users with the same meeting id in a grid form
+        //We are appending the other user in the #divUsers id in meeting.html
+        // TODO: We have to remove the other template and show the person who is currently screensharing.
+        /** 
+         * * With Add User we have only set the socket.io connection
+         * ? For the webRTC coonection we will create setNewConnection function
+         */
         $(".in-call-wrap-up").append(
             '<div class="in-call-wrap d-flex justify-content-between align-items-center mb-3" id="participant_' +
             connId +
