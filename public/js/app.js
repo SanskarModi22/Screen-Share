@@ -201,6 +201,9 @@ var AppProcess = (function() {
     // user information like network IP address, computers, users information will be stored in this
     // Information will be will be accessed by this particular connection object.
 
+    // ************************************SET OFFER**************************************
+    //We are sending offer for a webconnection through webRTC through SDP Processes.For this we have creted setOffer and SDP Process connection.
+    //We are sending the offer in form of message and our connection id.
     async function setConnection(connid) {
         var connection = new RTCPeerConnection(iceConfiguration);
 

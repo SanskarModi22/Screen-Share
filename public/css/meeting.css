@@ -4,7 +4,6 @@ body {
     margin: 0;
     box-sizing: border-box;
     overflow-x: hidden;
-    overflow-y: hidden;
     background-color: rgb(250, 235, 235) !important;
     font-family: "Poppins", sans-serif !important;
 }
