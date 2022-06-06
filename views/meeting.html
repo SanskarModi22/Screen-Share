@@ -79,11 +79,11 @@
               <div id="meetingContainer" style="display:none;flex-basis: 90%">
                 <div class="call-wrap" style="background-color: black;">
                   <div
-                    class="video-wrap"
+                    class="video-wrap align-content-center d-flex justify-content-center"
                     id="divUsers"
                     style="display: flex; flex-wrap: wrap"
                   >
-                    <div id="me" class="userbox display-center flex-column">
+                    <div id="me" class="userbox flex-column display-center">
                       <h2 class="display-center" style="font-size: 14px"></h2>
                       <div class="display-center">
                         <video autoplay muted id="locaVideoPlayer"></video>
@@ -188,8 +188,8 @@
     </div>
     <div class="d-flex lower-btn-section">
         <div class="lower-buttons d-flex justify-content-evenly">
-            <a class="material-icons screen-icon">mic</a>
-            <a class="material-icons screen-icon">videocam</a>
+            <a class="material-icons screen-icon" id="miceMuteUnmute">mic_off</a>
+            <a class="material-icons screen-icon" id="ScreenShareOnOf">videocam_off</a>
             <a class="material-icons screen-icon">share</a>
         </div>
         <a class="btn btn-danger end-btn">END</a>

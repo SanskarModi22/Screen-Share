@@ -237,6 +237,10 @@ button {
     justify-content: center;
 }
 
+.hide-div {
+    display: none!important;
+}
+
 .join-area {
     border-radius: 10px;
     text-align: center;
@@ -319,6 +323,15 @@ button {
 
 .video-show {
     height: 100%;
+}
+
+.video-size {
+    width: 36rem !important;
+}
+
+video {
+    border: 1px solid gray;
+    width: 15rem;
 }
 
 @media (max-width: 960px) {

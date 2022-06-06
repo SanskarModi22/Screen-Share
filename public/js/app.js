@@ -36,13 +36,13 @@ var AppProcess = (function() {
             if (isAudioMute) {
                 audio.enabled = true;
                 $(this).html(
-                    "<span class='material-icons' style='width:100%;'>mic</span>"
+                    "<span class='material-icons screen-icon' style='width:100%;'>mic</span>"
                 );
                 updateMediaSenders(audio, rtp_aud_senders);
             } else {
                 audio.enabled = false;
                 $(this).html(
-                    "<span class='material-icons' style='width:100%;'>mic_off</span>"
+                    "<span class='material-icons screen-icon' style='width:100%;'>mic_off</span>"
                 );
                 removeMediaSenders(rtp_aud_senders);
             }
@@ -80,9 +80,9 @@ var AppProcess = (function() {
             $("#videoCamOnOff").html(
                 "<span class='material-icons' style='width:100%;'>videocam_off</span>"
             );
-            $("#ScreenShareOnOf").html(
-                '<span class="material-icons">present_to_all</span><div>Present Now</div>'
-            );
+            // $("#ScreenShareOnOf").html(
+            //     '<span class="material-icons">present_to_all</span><div>Present Now</div>'
+            // );
             video_st = newVideoState;
 
             removeVideoStream(rtp_vid_senders);
@@ -114,7 +114,7 @@ var AppProcess = (function() {
                 vstream.oninactive = (e) => {
                     removeVideoStream(rtp_vid_senders);
                     $("#ScreenShareOnOf").html(
-                        '<span class="material-icons ">present_to_all</span><div >Present Now</div>'
+                        '<span class="material-icons screen-icon" style="width: 100%;">videocam_off</span>'
                     );
                 };
             }
@@ -132,17 +132,17 @@ var AppProcess = (function() {
         video_st = newVideoState;
         if (newVideoState == video_states.Camera) {
             $("#videoCamOnOff").html(
-                '<span class="material-icons" style="width: 100%;">videocam</span>'
+                '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
             );
             $("#ScreenShareOnOf").html(
-                '<span class="material-icons ">present_to_all</span><div >Present Now</div>'
+                '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
             );
         } else if (newVideoState == video_states.ScreenShare) {
             $("#videoCamOnOff").html(
-                '<span class="material-icons" style="width: 100%;">videocam_off</span>'
+                '<span class="material-icons screen-icon" style="width: 100%;">videocam_off</span>'
             );
             $("#ScreenShareOnOf").html(
-                '<span class="material-icons text-success">present_to_all</span><div class="text-success">Stop Present Now</div>'
+                '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
             );
         }
     }
@@ -345,6 +345,7 @@ var MyApp = (function() {
     var socket = null;
     var user_id = "";
     var meeting_id = "";
+    var allUsers = [];
 
     function init(uid, mid) {
         user_id = uid;
@@ -392,6 +393,7 @@ var MyApp = (function() {
             var userNumb = userNumber + 1;
             if (other_users) {
                 for (var i = 0; i < other_users.length; i++) {
+                    allUsers.push(other_users[i].connectionId);
                     addUser(
                         other_users[i].user_id,
                         other_users[i].connectionId,
@@ -451,7 +453,17 @@ var MyApp = (function() {
         $(".meeting_url").text(url);
 
         $("#divUsers").on("dblclick", "video", function() {
-            this.requestFullscreen();
+            $(this).addClass("video-size");
+            var elmId = $(this).attr("id");
+            var subStr = elmId.substring(2);
+            alert(subStr);
+            $('#me').hide();
+            for (var i = 0; i < allUsers.length; i++) {
+                if (allUsers[i] != subStr) {
+                    $('#' + allUsers[i]).hide();
+                    alert(allUsers[i]);
+                }
+            }
         });
     }
 
