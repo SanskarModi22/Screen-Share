@@ -80,6 +80,7 @@ var AppProcess = (function() {
             $("#videoCamOnOff").html(
                 "<span class='material-icons' style='width:100%;'>videocam_off</span>"
             );
+            // $("#stop-screen-sharing").hide();
             // $("#ScreenShareOnOf").html(
             //     '<span class="material-icons">present_to_all</span><div>Present Now</div>'
             // );
@@ -116,6 +117,7 @@ var AppProcess = (function() {
                     $("#ScreenShareOnOf").html(
                         '<span class="material-icons screen-icon" style="width: 100%;">videocam_off</span>'
                     );
+                    // $("#stop-screen-sharing").hide();
                 };
             }
             if (vstream && vstream.getVideoTracks().length > 0) {
@@ -144,6 +146,7 @@ var AppProcess = (function() {
             $("#ScreenShareOnOf").html(
                 '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
             );
+            // $("#stop-screen-sharing").show();
         }
     }
 
@@ -464,7 +467,17 @@ var MyApp = (function() {
                     alert(allUsers[i]);
                 }
             }
+            $("#stop-screen-sharing").show();
         });
+        $("#stop-screen-sharing").on("click", function() {
+            $('#me').show();
+            for (var i = 0; i < allUsers.length; i++) {
+                $("video").removeClass("video-size");
+                $('#' + allUsers[i]).show();
+                alert(allUsers[i]);
+            }
+            $("#stop-screen-sharing").hide();
+        })
     }
 
     // ***********************ADD USER*****************************

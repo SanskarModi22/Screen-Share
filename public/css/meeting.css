@@ -264,6 +264,10 @@ button {
     justify-content: space-around;
 }
 
+.normal-size {
+    width: 15rem !important;
+}
+
 .lower-screen-section {
     height: 100%;
     width: 75%;
@@ -312,6 +316,12 @@ button {
 .screen-icon {
     color: red;
     font-size: 3rem !important;
+}
+
+.stop-share {
+    width: 33%;
+    height: 33%;
+    border-radius: 0.75rem !important;
 }
 
 .text-field {
