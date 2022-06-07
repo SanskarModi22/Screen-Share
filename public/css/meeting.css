@@ -303,13 +303,13 @@ button {
 
 .participants-card {
     background-color: white;
-    width: 100%;
+    width: 110%;
     height: 100%;
     border-radius: 15px;
 }
 
 .participant-section {
-    width: 25%;
+    width: 30%;
     height: 60%;
 }
 

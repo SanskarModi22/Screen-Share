@@ -183,7 +183,28 @@
     </div>
     <div class="participant-section d-flex flex-column">
         <h4 style="color: red" class="mb-2">Participants</h4>
-        <div class="participants-card"></div>
+        <div class="in-call-wrap-up participants-card">
+            <div class="in-call-wrap d-flex justify-content-between align-items-center mb-3">
+                <div class="participant-img-name-wrap display-center d-flex justify-content-center align-items-center p-1">
+                    <div class="participant-img">
+                        <img src="public/assets/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;">
+                    </div>
+                    <div class="participant-name ms-2">You</div>
+                </div>
+                <div class="participant-action-wrap display-center d-flex" style="cursor:pointer;">
+                    <!-- <div class="participant-action-dot display-center mr-2 cursor-pointer">
+                    <span class="material-icons">
+                    more_vert
+                </span>
+                </div> -->
+                    <div class="participant-action-pin display-center mr-2 cursor-pointer" id="participants-pin-action">
+                        <span class="material-icons" id="localPin">
+                    push_pin
+                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
     <div class="d-flex lower-btn-section">
@@ -192,7 +213,7 @@
             <a class="material-icons screen-icon" id="ScreenShareOnOf">videocam_off</a>
             <a class="material-icons screen-icon">share</a>
         </div>
-        <a class="btn btn-danger stop-share me-2" id="stop-screen-sharing" style="display:none">Stop Sharing</a>
+        <a class="btn btn-danger stop-share me-2" id="stop-screen-sharing" style="display:none">Stop Watching</a>
         <a class="btn btn-danger end-btn">END</a>
     </div>
     </div>

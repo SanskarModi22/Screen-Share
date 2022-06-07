@@ -454,7 +454,28 @@ var MyApp = (function() {
 
         var url = window.location.href;
         $(".meeting_url").text(url);
-
+        $(".in-call-wrap-up").on("click", ".participant-action-wrap .participant-action-pin span", function() {
+            var elmId = $(this).attr("id");
+            $("video").addClass("video-size");
+            if (elmId != "localPin")
+                var subStr = elmId.substring(4);
+            else
+                subStr = "locaVideoPlayer";
+            alert(subStr);
+            $('#me').hide();
+            for (var i = 0; i < allUsers.length; i++) {
+                $('#' + allUsers[i]).hide();
+                alert(allUsers[i]);
+            }
+            if (subStr != "locaVideoPlayer") {
+                $('#' + subStr).show();
+                $("#pin_" + subStr).html('<img src="../public/images/unpin.png"  id="' + elmId + '"/>');
+            } else {
+                $('#me').show();
+                $("#localPin").html('<img src="../public/images/unpin.png"  id="localPin"/>');
+            }
+            $("#stop-screen-sharing").show();
+        });
         $("#divUsers").on("dblclick", "video", function() {
             $(this).addClass("video-size");
             var elmId = $(this).attr("id");
@@ -467,6 +488,7 @@ var MyApp = (function() {
                     alert(allUsers[i]);
                 }
             }
+            $("#pin_" + subStr).html('<img src="../public/images/unpin.png"  id="pin_' + subStr + '" push_pin />');
             $("#stop-screen-sharing").show();
         });
         $("#stop-screen-sharing").on("click", function() {
@@ -474,10 +496,12 @@ var MyApp = (function() {
             for (var i = 0; i < allUsers.length; i++) {
                 $("video").removeClass("video-size");
                 $('#' + allUsers[i]).show();
+                $("#pin_" + allUsers[i]).html('<span class="material-icons" id="pin_' + allUsers[i] + '"> push_pin </span>');
+                $("#localPin").html('<span class="material-icons" id="localPin"> push_pin </span>');
                 alert(allUsers[i]);
             }
             $("#stop-screen-sharing").hide();
-        })
+        });
     }
 
     // ***********************ADD USER*****************************
@@ -501,9 +525,9 @@ var MyApp = (function() {
         $(".in-call-wrap-up").append(
             '<div class="in-call-wrap d-flex justify-content-between align-items-center mb-3" id="participant_' +
             connId +
-            '"> <div class="participant-img-name-wrap display-center cursor-pointer"> <div class="participant-img"> <img src="public/Assets/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ml-2"> ' +
+            '"> <div class="participant-img-name-wrap display-center cursor-pointer d-flex justify-content-center align-items-center p-1"> <div class="participant-img"> <img src="public/Assets/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ms-2"> ' +
             other_user_id +
-            '</div> </div> <div class="participant-action-wrap display-center"> <div class="participant-action-dot display-center mr-2 cursor-pointer"> <span class="material-icons"> more_vert </span> </div> <div class="participant-action-pin display-center mr-2 cursor-pointer"> <span class="material-icons"> push_pin </span> </div> </div> </div>'
+            '</div> </div> <div class="participant-action-wrap display-center" style="cursor:pointer;"><div class="participant-action-pin display-center mr-2 cursor-pointer"> <span class="material-icons" id="pin_' + connId + '"> push_pin </span> </div> </div> </div>'
         );
         $(".participant-count").text(userNum);
     }
