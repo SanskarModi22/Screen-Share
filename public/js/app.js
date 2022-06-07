@@ -487,7 +487,8 @@ var MyApp = (function() {
         $("#divUsers").on("dblclick", "video", function() {
             $(this).addClass("video-size");
             var elmId = $(this).attr("id");
-            var subStr = elmId.substring(2);
+            if (elmId != "localPin") var subStr = elmId.substring(2);
+            else subStr = "locaVideoPlayer";
             alert(subStr);
             $("#me").hide();
             for (var i = 0; i < allUsers.length; i++) {
@@ -496,15 +497,25 @@ var MyApp = (function() {
                     alert(allUsers[i]);
                 }
             }
-            $("#pin_" + subStr).html(
-                '<img src="../public/images/unpin.png"  id="pin_' +
-                subStr +
-                '" push_pin />'
-            );
+            if (subStr != "locaVideoPlayer") {
+                $("#" + subStr).show();
+                $("#pin_" + subStr).html(
+                    '<img src="../public/images/unpin.png"  id="' + elmId + '"/>'
+                );
+            } else {
+                $("#me").show();
+                $("#localPin").html(
+                    '<img src="../public/images/unpin.png"  id="localPin"/>'
+                );
+            }
             $("#stop-screen-sharing").show();
         });
         $("#stop-screen-sharing").on("click", function() {
+            $("#me video").removeClass("video-size");
             $("#me").show();
+            $("#localPin").html(
+                '<span class="material-icons" id="localPin"> push_pin </span>'
+            );
             for (var i = 0; i < allUsers.length; i++) {
                 $("video").removeClass("video-size");
                 $("#" + allUsers[i]).show();
@@ -512,9 +523,6 @@ var MyApp = (function() {
                     '<span class="material-icons" id="pin_' +
                     allUsers[i] +
                     '"> push_pin </span>'
-                );
-                $("#localPin").html(
-                    '<span class="material-icons" id="localPin"> push_pin </span>'
                 );
                 alert(allUsers[i]);
             }
