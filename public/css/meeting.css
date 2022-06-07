@@ -19,6 +19,10 @@ a {
     cursor: pointer;
 }
 
+.call-wrap {
+    overflow: auto;
+}
+
 .desktop-size {
     height: 100vh;
     width: 100vw;
@@ -306,6 +310,7 @@ button {
     width: 110%;
     height: 100%;
     border-radius: 15px;
+    overflow: auto;
 }
 
 .participant-section {
@@ -319,8 +324,8 @@ button {
 }
 
 .stop-share {
-    width: 33%;
-    height: 33%;
+    width: 61%;
+    height: 35%;
     border-radius: 0.75rem !important;
 }
 
