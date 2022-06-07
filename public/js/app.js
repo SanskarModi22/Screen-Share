@@ -355,7 +355,12 @@ var MyApp = (function() {
         meeting_id = mid;
         $("#meetingContainer").show();
         $("#me h2").text(user_id + "(Me)");
-        document.title = user_id;
+        // document.title = user_id;
+        // const urlParams = new URLSearchParams(window.location.search);
+        // var meeting_id = urlParams.get("meetingID");
+        // var meetingUrl =
+        //     window.location.origin + "/views/join.html" + "?meetingID=" + meeting_id;
+        // $(".meeting_url").text(meetingUrl);
         event_process_for_signaling_server();
         eventHandeling();
     }
@@ -451,9 +456,6 @@ var MyApp = (function() {
             $("#messages").append(div);
             $("#msgbox").val("");
         });
-
-        var url = window.location.href;
-        $(".meeting_url").text(url);
         $(".in-call-wrap-up").on(
             "click",
             ".participant-action-wrap .participant-action-pin span",
@@ -608,22 +610,31 @@ var MyApp = (function() {
         for (var i = 0; i < allUsers.length; i++) {
             $("#" + allUsers[i]).remove();
         }
-        var meetingUrl =
-            window.location.origin + "/views/new-meeting.html";
+        var meetingUrl = window.location.origin + "/views/new-meeting.html";
         window.location.replace(meetingUrl);
         return;
     });
-    $(document).on("click", ".copy_info", function() {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(".meeting_url").text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-        $(".link-conf").show();
-        setTimeout(function() {
-            $(".link-conf").hide();
-        }, 3000);
-    });
+    $(document).on(
+        "click",
+        ".lower-btn-section .lower-buttons .copy_info",
+        function() {
+            document.title = user_id;
+            const urlParams = new URLSearchParams(window.location.search);
+            var meeting_id = urlParams.get("meetingID");
+            var meetingUrl =
+                window.location.origin + "/views/join.html" + "?meetingID=" + meeting_id;
+            $(".meeting_url").text(meetingUrl);
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(".meeting_url").text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+            alert("Link Copied");
+            // setTimeout(function() {
+            //     $(".link-conf").hide();
+            // }, 3000);
+        }
+    );
     $(document).on("click", ".meeting-details-button", function() {
         $(".g-details").slideDown(300);
     });
