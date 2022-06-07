@@ -487,7 +487,7 @@ var MyApp = (function() {
         $("#divUsers").on("dblclick", "video", function() {
             $(this).addClass("video-size");
             var elmId = $(this).attr("id");
-            if (elmId != "localPin") var subStr = elmId.substring(2);
+            if (elmId != "locaVideoPlayer") var subStr = elmId.substring(2);
             else subStr = "locaVideoPlayer";
             alert(subStr);
             $("#me").hide();
