@@ -221,17 +221,22 @@ button {
 }
 
 .end-btns {
-    width: 60%;
+    width: 100%;
     align-self: center;
+}
+
+.ending-card {
+    margin-bottom: 10rem;
 }
 
 .end-card {
     background-color: rgb(250, 235, 235);
-    width: 30%;
+    width: 50%;
     height: 30%;
     z-index: 1;
     position: absolute;
     margin-left: 30%;
+    border-radius: 1rem;
 }
 
 .g-top {

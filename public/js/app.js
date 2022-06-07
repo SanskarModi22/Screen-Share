@@ -454,50 +454,66 @@ var MyApp = (function() {
 
         var url = window.location.href;
         $(".meeting_url").text(url);
-        $(".in-call-wrap-up").on("click", ".participant-action-wrap .participant-action-pin span", function() {
-            var elmId = $(this).attr("id");
-            $("video").addClass("video-size");
-            if (elmId != "localPin")
-                var subStr = elmId.substring(4);
-            else
-                subStr = "locaVideoPlayer";
-            alert(subStr);
-            $('#me').hide();
-            for (var i = 0; i < allUsers.length; i++) {
-                $('#' + allUsers[i]).hide();
-                alert(allUsers[i]);
+        $(".in-call-wrap-up").on(
+            "click",
+            ".participant-action-wrap .participant-action-pin span",
+            function() {
+                var elmId = $(this).attr("id");
+                $("video").addClass("video-size");
+                if (elmId != "localPin") var subStr = elmId.substring(4);
+                else subStr = "locaVideoPlayer";
+                alert(subStr);
+                $("#me").hide();
+                for (var i = 0; i < allUsers.length; i++) {
+                    $("#" + allUsers[i]).hide();
+                    alert(allUsers[i]);
+                }
+                if (subStr != "locaVideoPlayer") {
+                    $("#" + subStr).show();
+                    $("#pin_" + subStr).html(
+                        '<img src="../public/images/unpin.png"  id="' + elmId + '"/>'
+                    );
+                } else {
+                    $("#me").show();
+                    $("#localPin").html(
+                        '<img src="../public/images/unpin.png"  id="localPin"/>'
+                    );
+                }
+                $("#stop-screen-sharing").show();
             }
-            if (subStr != "locaVideoPlayer") {
-                $('#' + subStr).show();
-                $("#pin_" + subStr).html('<img src="../public/images/unpin.png"  id="' + elmId + '"/>');
-            } else {
-                $('#me').show();
-                $("#localPin").html('<img src="../public/images/unpin.png"  id="localPin"/>');
-            }
-            $("#stop-screen-sharing").show();
-        });
+        );
         $("#divUsers").on("dblclick", "video", function() {
             $(this).addClass("video-size");
             var elmId = $(this).attr("id");
             var subStr = elmId.substring(2);
             alert(subStr);
-            $('#me').hide();
+            $("#me").hide();
             for (var i = 0; i < allUsers.length; i++) {
                 if (allUsers[i] != subStr) {
-                    $('#' + allUsers[i]).hide();
+                    $("#" + allUsers[i]).hide();
                     alert(allUsers[i]);
                 }
             }
-            $("#pin_" + subStr).html('<img src="../public/images/unpin.png"  id="pin_' + subStr + '" push_pin />');
+            $("#pin_" + subStr).html(
+                '<img src="../public/images/unpin.png"  id="pin_' +
+                subStr +
+                '" push_pin />'
+            );
             $("#stop-screen-sharing").show();
         });
         $("#stop-screen-sharing").on("click", function() {
-            $('#me').show();
+            $("#me").show();
             for (var i = 0; i < allUsers.length; i++) {
                 $("video").removeClass("video-size");
-                $('#' + allUsers[i]).show();
-                $("#pin_" + allUsers[i]).html('<span class="material-icons" id="pin_' + allUsers[i] + '"> push_pin </span>');
-                $("#localPin").html('<span class="material-icons" id="localPin"> push_pin </span>');
+                $("#" + allUsers[i]).show();
+                $("#pin_" + allUsers[i]).html(
+                    '<span class="material-icons" id="pin_' +
+                    allUsers[i] +
+                    '"> push_pin </span>'
+                );
+                $("#localPin").html(
+                    '<span class="material-icons" id="localPin"> push_pin </span>'
+                );
                 alert(allUsers[i]);
             }
             $("#stop-screen-sharing").hide();
@@ -518,7 +534,7 @@ var MyApp = (function() {
         //In meeting.html there is a div with id #otherTemplate . This will show other users with the same meeting id in a grid form
         //We are appending the other user in the #divUsers id in meeting.html
         // TODO: We have to remove the other template and show the person who is currently screensharing.
-        /** 
+        /**
          * * With Add User we have only set the socket.io connection
          * ? For the webRTC coonection we will create setNewConnection function
          */
@@ -527,7 +543,9 @@ var MyApp = (function() {
             connId +
             '"> <div class="participant-img-name-wrap display-center cursor-pointer d-flex justify-content-center align-items-center p-1"> <div class="participant-img"> <img src="public/Assets/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ms-2"> ' +
             other_user_id +
-            '</div> </div> <div class="participant-action-wrap display-center" style="cursor:pointer;"><div class="participant-action-pin display-center mr-2 cursor-pointer"> <span class="material-icons" id="pin_' + connId + '"> push_pin </span> </div> </div> </div>'
+            '</div> </div> <div class="participant-action-wrap display-center" style="cursor:pointer;"><div class="participant-action-pin display-center mr-2 cursor-pointer"> <span class="material-icons" id="pin_' +
+            connId +
+            '"> push_pin </span> </div> </div> </div>'
         );
         $(".participant-count").text(userNum);
     }
@@ -561,25 +579,39 @@ var MyApp = (function() {
         $(".chat-show-wrap").show(300);
     });
     $(document).on("click", ".end-call-wrap", function() {
-        $(".top-box-show")
+        $(".ending-card").show();
+        $(".end-card")
             .css({
                 display: "block",
             })
-            .html(
-                '<div class="top-box align-vertical-middle profile-dialogue-show"> <h4 class="mt-3" style="text-align:center;color:white;">Leave Meeting</h4> <hr> <div class="call-leave-cancel-action d-flex justify-content-center align-items-center w-100"> <a href="/action.html"><button class="call-leave-action btn btn-danger mr-5">Leave</button></a> <button class="call-cancel-action btn btn-secondary">Cancel</button> </div> </div>'
-            );
+
+        .html(
+            ' <div class="end-card d-flex flex-column justify-content-evenly align-content-center"><div class="btn btn-danger end-btns leave-all">End Meeting For All</div><a href="./new-meeting.html"><div class="call-leave-action btn btn-dark end-btns">Leave Meeting</div></a><div class="call-cancel-action btn btn-dark end-btns">Cancel</div></div>'
+        );
     });
     $(document).mouseup(function(e) {
         var container = new Array();
-        container.push($(".top-box-show"));
+        container.push($(".end-card"));
         $.each(container, function(key, value) {
             if (!$(value).is(e.target) && $(value).has(e.target).length == 0) {
                 $(value).empty();
             }
         });
+        $(".ending-card").hide();
     });
     $(document).on("click", ".call-cancel-action", function() {
-        $(".top-box-show").html("");
+        // $(".end-card").addClass("hide-div");
+        $(".ending-card").hide();
+    });
+    $(document).on("click", ".leave-all", function() {
+        // $(".end-card").addClass("hide-div");
+        for (var i = 0; i < allUsers.length; i++) {
+            $("#" + allUsers[i]).remove();
+        }
+        var meetingUrl =
+            window.location.origin + "/views/new-meeting.html";
+        window.location.replace(meetingUrl);
+        return;
     });
     $(document).on("click", ".copy_info", function() {
         var $temp = $("<input>");
