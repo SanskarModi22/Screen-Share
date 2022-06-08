@@ -12,6 +12,7 @@ body {
 a {
     text-decoration: none !important;
     cursor: pointer;
+    color: white !important;
 }
 
 .desktop-size {
