@@ -2,14 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/more.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="../public/js/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/84c4a0d090.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
+<!-- TODO:Parse the url and get the meeting id if there -->
 
 <body>
-    <h3>More</h3>
+    <div class="mobile-size">
+        <!-- <div class="mobile-upper">
+            <a href="./home.html">
+                <h6 style="color:black">Cancel</h6>
+            </a>
+            <a href="./new-meeting.html">
+                <h5 style="color:red;">Start a Meeting</h5>
+            </a>
+        </div> -->
+        <div class="mobile-middle">
+            <h4 style="color:red;">More</h4>
+            <h5 class="mt-5" style="align-self: start;">Profile</h5>
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="others.png" width="4rem;" />
+                <div class="d-flex flex-column justify-content-center align-items-center" style="width:15rem;">
+                    <p>Sanskar Modi</p>
+                    <div class="d-flex">
+                        <span class="fa fa-google me-2"></span>
+                        <p style="font-size: 0.8rem;">modisanskar5@gmail.com
+                        </p>
+                    </div>
+                </div>
+                <button class="btn btn-danger" style="height:2.3rem;">Log Out</button>
+            </div>
+            <h5 style="align-self: start;" class="mt-5">Other</h5>
+            <div class="d-flex flex-column align-items-start justify-content-center align-self-center ms-5 mt-3" style="width:100%;">
+                <div class="d-flex justify-content-evenly align-content-start">
+                    <span class="material-icons me-5" style="color:black;">info</span><a style="margin-right: 10rem;color: black !important;">About</a><span class="material-icons" style="color:black;">arrow_forward_ios</span></div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span class="material-icons me-5" style="color:black;">task</span><a style="margin-right: 6.2rem;color: black !important;">Privacy Policy</a><span class="material-icons" style="color:black;">arrow_forward_ios</span></div>
+            </div>
+        </div>
+
+        <div class="mobile-bottom">
+            <div><a href="./home.html"><i class="fa-solid fa-house" style="font-size:1.5rem;"></i></a></div>
+            <div><i class="fa-solid fa-clock" style="font-size:1.5rem;"></i></div>
+            <div><i class="fa-solid fa-ellipsis" style="font-size:1.5rem;"></i></div>
+        </div>
+    </div>
 </body>
 
 </html>
