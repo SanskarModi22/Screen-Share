@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/privacy-web.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <script src="https://kit.fontawesome.com/84c4a0d090.js" crossorigin="anonymous"></script>
+    <script src="../public/js/jquery-3.4.1.min.js"></script>
+    <script src="../public/js/new-meeting.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="desktop-size">
+        <div class="desktop-left">
+            <div class="d-left-upper">
+                <h3>Screen Sharing</h3>
+            </div>
+            <div class="d-left-middle"><a href="./home.html"><i class="fa-solid fa-house fa-2x"></i></a></div>
+            <div class="d-left-lower">
+                <div class="dropdown">
+                    <span class="fa-solid fa-ellipsis fa-2x dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false "></span>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li class="d-flex justify-content-evenly align-content-center"><span class="material-icons" style="color:red;">info</span><a class="dropdown-item" href="# " style="color:red !important;">About</a></li>
+                        <li class="d-flex"><span class="material-icons" style="color:red;">task</span><a class="dropdown-item" href="# " style="color:red !important;">Privacy Policy</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="desktop-right">
+            <div class="d-right-upper">
+                <div class="d-time">
+                    <h1><b>12:35 PM</b></h1>
+                </div>
+                <div class="d-date">
+                    <p><b>Thursday, 20th May'22</b></p>
+                </div>
+                <div class="d-search">
+                    <input type="text" placeholder="Search" />
+                    <button type="button">
+              <i class="fa-solid fa-magnifying-glass" style="font-size:1.2rem !important;"></i>
+            </button>
+                </div>
+                <div class="d-profile-pic">
+                    <img src="" alt="profile-pic" />
+                </div>
+            </div>
+            <div class="lower-section ">
+                <div class="d-right-left mb-5">
+                    <h3 class="join-text " style="color:red">Privacy Policy</h3>
+                    <p>This Privacy Policy is meant to help you understand what information we collect, why we collect it, and how you can update, manage, export, and delete your information</p>
+                </div>
+                <div class="d-right-right">
+                    <img class="join-image" src="../public/images/Privacy Policy Illustration.png" />
+                </div>
+            </div>
+            <!-- <div class="d-right-lower">
+                <div class="d-right-left">
+                    <div class="d-meets">
+                        <div class="d-new-meet">
+                            <div><i class="fa-solid fa-video fa-2x"></i></div>
+                            <div>
+                                <h3 style="font-weight: lighter">NEW MEETING</h3>
+                            </div>
+                        </div>
+                        <div class="d-join-meet">
+                            <div><i class="fa-solid fa-circle-plus fa-2x"></i></div>
+                            <div>
+                                <h3 style="font-weight: lighter">JOIN MEETING</h3>
+                            </div>
+                        </div>
+                        <div class="d-schedule-meet">
+                            <div><i class="fa-solid fa-calendar-days fa-2x"></i></div>
+                            <div>
+                                <h3 style="font-weight: lighter">SCHEDULE MEETING</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+        </div>
+    </div>
+    <div class="mobile-size">
+        <div class="mobile-upper">
+            <a href="./home.html">
+                <h6 style="color:black">Cancel</h6>
+            </a>
+            <a href="./join.html">
+                <h5 style="color:red;">Join a Meeting</h5>
+            </a>
+        </div>
+        <div class="mobile-middle">
+
+            <div class="text-field-mobile">
+                <input type="text" placeholder="Enter Name" style="border: none;" class="join-area join-name">
+            </div>
+            <button class="btn btn-danger mt-2 join-btn-mobile ms-3 create-meeting">Start a Meeting</button>
+
+        </div>
+        <div class="mobile-bottom">
+            <div><a href="./home.html"><i class="fa-solid fa-house" style="font-size:1.5rem;"></i></a></div>
+            <div><i class="fa-solid fa-clock" style="font-size:1.5rem;"></i></div>
+            <div><i class="fa-solid fa-ellipsis" style="font-size:1.5rem;"></i></div>
+        </div>
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+</body>
+
+</html>
