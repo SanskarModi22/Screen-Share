@@ -5,6 +5,7 @@ var AppProcess = (function() {
     var remote_vid_stream = [];
     var remote_aud_stream = [];
     var local_div;
+    var local_div_Mob;
     var serverProcess;
     var audio;
     var isAudioMute = true;
@@ -22,9 +23,33 @@ var AppProcess = (function() {
         my_connection_id = my_connid;
         eventProcess();
         local_div = document.getElementById("locaVideoPlayer");
+        local_div_Mob = document.getElementById("locaVideoPlayerMob");
     }
 
     function eventProcess() {
+        $("#micMuteUnmute").on("click", async function() {
+            if (!audio) {
+                await loadAudio();
+            }
+            if (!audio) {
+                alert("Audio permission has not granted");
+                return;
+            }
+            if (isAudioMute) {
+                audio.enabled = true;
+                $(this).html(
+                    "<span class='material-icons screen-icon' style='width:100%;'>mic</span>"
+                );
+                updateMediaSenders(audio, rtp_aud_senders);
+            } else {
+                audio.enabled = false;
+                $(this).html(
+                    "<span class='material-icons screen-icon' style='width:100%;'>mic_off</span>"
+                );
+                removeMediaSenders(rtp_aud_senders);
+            }
+            isAudioMute = !isAudioMute;
+        });
         $("#miceMuteUnmute").on("click", async function() {
             if (!audio) {
                 await loadAudio();
@@ -56,6 +81,13 @@ var AppProcess = (function() {
             }
         });
         $("#ScreenShareOnOf").on("click", async function() {
+            if (video_st == video_states.ScreenShare) {
+                await videoProcess(video_states.None);
+            } else {
+                await videoProcess(video_states.ScreenShare);
+            }
+        });
+        $("#ScreenShareOnOfMob").on("click", async function() {
             if (video_st == video_states.ScreenShare) {
                 await videoProcess(video_states.None);
             } else {
@@ -117,6 +149,9 @@ var AppProcess = (function() {
                     $("#ScreenShareOnOf").html(
                         '<span class="material-icons screen-icon" style="width: 100%;">videocam_off</span>'
                     );
+                    $("#ScreenShareOnOfMob").html(
+                        '<span class="material-icons screen-icon" style="width: 100%;">videocam_off</span>'
+                    );
                     // $("#stop-screen-sharing").hide();
                 };
             }
@@ -124,6 +159,7 @@ var AppProcess = (function() {
                 videoCamTrack = vstream.getVideoTracks()[0];
                 if (videoCamTrack) {
                     local_div.srcObject = new MediaStream([videoCamTrack]);
+                    local_div_Mob.srcObject = new MediaStream([videoCamTrack]);
                     updateMediaSenders(videoCamTrack, rtp_vid_senders);
                 }
             }
@@ -139,11 +175,17 @@ var AppProcess = (function() {
             $("#ScreenShareOnOf").html(
                 '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
             );
+            $("#ScreenShareOnOfMob").html(
+                '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
+            );
         } else if (newVideoState == video_states.ScreenShare) {
             $("#videoCamOnOff").html(
                 '<span class="material-icons screen-icon" style="width: 100%;">videocam_off</span>'
             );
             $("#ScreenShareOnOf").html(
+                '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
+            );
+            $("#ScreenShareOnOfMob").html(
                 '<span class="material-icons screen-icon" style="width: 100%;">videocam</span>'
             );
             // $("#stop-screen-sharing").show();
@@ -188,6 +230,7 @@ var AppProcess = (function() {
             videoCamTrack.stop();
             videoCamTrack = null;
             local_div.srcObject = null;
+            local_div_Mob.srcObject = null;
             removeMediaSenders(rtp_vid_senders);
         }
     }
@@ -355,6 +398,8 @@ var MyApp = (function() {
         meeting_id = mid;
         $("#meetingContainer").show();
         $("#me h2").text(user_id + "(Me)");
+        $("#MobmeetingContainer").show();
+        $("#meMob h2").text(user_id + "(Me)");
         // document.title = user_id;
         // const urlParams = new URLSearchParams(window.location.search);
         // var meeting_id = urlParams.get("meetingID");
@@ -510,6 +555,33 @@ var MyApp = (function() {
             }
             $("#stop-screen-sharing").show();
         });
+        $("#divUsersMob").on("click", "video", function() {
+            $(this).addClass("video-size-Mob");
+            console.log("hello");
+            var elmId = $(this).attr("id");
+            if (elmId != "locaVideoPlayerMob") var subStr = elmId.substring(2);
+            else subStr = "locaVideoPlayerMob";
+            alert(subStr);
+            $("#meMob").hide();
+            for (var i = 0; i < allUsers.length; i++) {
+                if (allUsers[i] != subStr) {
+                    $("#" + allUsers[i] + "Mob").hide();
+                    alert(allUsers[i]);
+                }
+            }
+            if (subStr != "locaVideoPlayerMob") {
+                $("#" + subStr).show();
+                $("#pin_" + subStr).html(
+                    '<img src="../public/images/unpin.png"  id="' + elmId + '"/>'
+                );
+            } else {
+                $("#meMob").show();
+                $("#localPin").html(
+                    '<img src="../public/images/unpin.png"  id="localPin"/>'
+                );
+            }
+            $("#stop-screen-sharing-Mob").show();
+        });
         $("#stop-screen-sharing").on("click", function() {
             $("#me video").removeClass("video-size");
             $("#me").show();
@@ -528,10 +600,38 @@ var MyApp = (function() {
             }
             $("#stop-screen-sharing").hide();
         });
+        $("#stop-screen-sharing-Mob").on("click", function() {
+            $("#meMob video").removeClass("video-size-Mob");
+            $("#meMob").show();
+            $("#localPin").html(
+                '<span class="material-icons" id="localPin"> push_pin </span>'
+            );
+            for (var i = 0; i < allUsers.length; i++) {
+                $("video").removeClass("video-size-Mob");
+                $("#" + allUsers[i] + "Mob").show();
+                $("#pin_" + allUsers[i]).html(
+                    '<span class="material-icons" id="pin_' +
+                    allUsers[i] +
+                    '"> push_pin </span>'
+                );
+                alert(allUsers[i]);
+            }
+            $("#stop-screen-sharing-Mob").hide();
+        });
     }
 
     // ***********************ADD USER*****************************
     function addUser(other_user_id, connId, userNum) {
+        var newMobDivId = $("#otherTemplateMob").clone();
+        newMobDivId = newMobDivId.attr("id", connId + "Mob").addClass("other");
+        newMobDivId.find("h2").text(other_user_id);
+        newMobDivId.find("video").attr("id", "v_" + connId + "Mob").addClass("mobView");
+        //For every new user the video id and audio id will be added
+        //in place of id of video
+        newMobDivId.find("audio").attr("id", "a_" + connId);
+        newMobDivId.show();
+        $("#divUsersMob").append(newMobDivId);
+
         var newDivId = $("#otherTemplate").clone();
         newDivId = newDivId.attr("id", connId).addClass("other");
         newDivId.find("h2").text(other_user_id);
@@ -635,6 +735,27 @@ var MyApp = (function() {
             var $temp = $("<input>");
             $("body").append($temp);
             $temp.val($(".meeting_url").text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+            alert("Link Copied");
+            // setTimeout(function() {
+            //     $(".link-conf").hide();
+            // }, 3000);
+        }
+    );
+    $(document).on(
+        "click",
+        ".copy_info_Mob",
+        function() {
+            document.title = user_id;
+            const urlParams = new URLSearchParams(window.location.search);
+            var meeting_id = urlParams.get("meetingID");
+            var meetingUrl =
+                window.location.origin + "/views/join.html" + "?meetingID=" + meeting_id;
+            $(".meeting_url_Mob").text(meetingUrl);
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(".meeting_url_Mob").text()).select();
             document.execCommand("copy");
             $temp.remove();
             alert("Link Copied");
