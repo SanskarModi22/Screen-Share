@@ -13,21 +13,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="https://kit.fontawesome.com/84c4a0d090.js" crossorigin="anonymous"></script>
     <title>Document</title>
+    <script src="../public/js/jquery-3.4.1.min.js"></script>
+    <script src="../public/js/app.js"></script>
+    <script>
+        $(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            var meeting_id = urlParams.get("meetingID");
+            var user_name = urlParams.get("name");
+            console.log(user_name);
+            if (meeting_id == null) {
+                alert("Room id is missing");
+                var meetingUrl = window.location.origin + "/views/join.html";
+                window.location.replace(meetingUrl);
+                return;
+            } else if (user_name == null) {
+                alert("User name is missing");
+                var meetingUrl =
+                    window.location.origin +
+                    "/views/join.html" +
+                    "?meetingID=" +
+                    meeting_id;
+                window.location.replace(meetingUrl);
+                return;
+            }
+            //TODO: #meetingContainer not made for mobile view till now
+            MyApp._init(user_name, meeting_id);
+        });
+    </script>
 </head>
 
 <body>
     <div class="mobile-size">
         <div class="mobile-upper">
-            <h6 style="color:black">Cancel</h6>
-            <h5>Participants(2)</h5>
+            <h6 class="cancel-action" style="color:black">Cancel</h6>
+            <h5>Participants(<span class="participant-count-Mob">1</span>)</h5>
         </div>
         <div class="mobile-middle">
+            <div class="participant-section-Mob d-flex flex-column">
+                <h4 style="color: red" class="mb-4 ms-3">Participants</h4>
+                <div class="in-call-wrap-up-Mob participants-card-Mob">
+                    <div class="in-call-wrap-Mob d-flex justify-content-between align-items-center mb-3">
+                        <div class="participant-img-name-wrap display-center d-flex justify-content-center align-items-center p-1">
+                            <div class="participant-img">
+                                <img src="public/assets/images/other.jpg" alt="" class="border border-secondary" style="height: 40px; width: 40px; border-radius: 50%" />
+                            </div>
+                            <div class="participant-name ms-2">You</div>
+                        </div>
+                        <div class="participant-action-wrap display-center d-flex" style="cursor: pointer">
+                            <div class="participant-action-pin display-center mr-2 cursor-pointer" id="participants-pin-action">
+                                <span class="material-icons" id="localPin"> push_pin </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="mobile-bottom d-flex justify-content-evenly">
             <button class="btn btn-danger">INVITE</button>
             <button class="btn btn-danger">MUTE ALL</button>
         </div>
     </div>
+    <script>
+        $(function() {
+            $(document).on("click", ".cancel-action", function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                var meeting_id = urlParams.get("meetingID");
+                var user_name = urlParams.get("name");
+                var meetingUrl =
+                    window.location.origin +
+                    "/views/meeting.html" +
+                    "?meetingID=" +
+                    meeting_id +
+                    "&name=" +
+                    user_name;
+                window.location.replace(meetingUrl);
+            });
+            //The keyboard textarea will be focussed when we click on join meeting . Keyboard has .enter-code class and join buttin has .join-meeting class
+            //After focussing we will replace the window address with room address
+        });
+    </script>
 </body>
 
 </html>

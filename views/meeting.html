@@ -289,15 +289,33 @@
           >
           <!-- <div><span class="btn-text">Stop Watching</span></div> -->
         </div>
-        <a
-          href="./participant-mobile.html"
-          class="d-flex justify-content-evenly flex-column align-content-center"
+        <div
+          class="d-flex justify-content-evenly flex-column align-content-center participant-mobile"
         >
           <div class="material-icons screen-icon ms-4">groups</div>
           <!-- <div><span class="btn-text">Participants</span></div> -->
-        </a>
+    </div>
             </div>
         </div>
+        <script>
+            $(function() {
+    $(document).on("click", ".participant-mobile", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            var meeting_id = urlParams.get("meetingID");
+            var user_name = urlParams.get("name");
+            var meetingUrl =
+                window.location.origin +
+                "/views/participant-mobile.html" +
+                "?meetingID=" +
+                meeting_id +
+                "&name=" +
+                user_name;
+            window.location.replace(meetingUrl);
+    });
+    //The keyboard textarea will be focussed when we click on join meeting . Keyboard has .enter-code class and join buttin has .join-meeting class
+    //After focussing we will replace the window address with room address
+});
+        </script>
 </body>
 
 </html>
