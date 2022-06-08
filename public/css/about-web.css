@@ -1,0 +1,331 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: rgb(250, 235, 235) !important;
+    font-family: "Poppins", sans-serif !important;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+    color: white !important;
+}
+
+.desktop-size {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.desktop-left {
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    background-color: #dc3644;
+    border-radius: 0 3rem 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.d-left-upper,
+.d-left-middle,
+.d-left-lower {
+    height: 35%;
+    width: 40%;
+    color: white;
+}
+
+.d-left-middle {
+    margin-top: -5rem;
+}
+
+.d-left-lower {
+    margin-bottom: -10rem;
+}
+
+.desktop-right {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.d-right-upper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.d-time,
+.d-date {
+    color: #db3643;
+}
+
+.d-search {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+input {
+    height: 3.5rem;
+    outline: none;
+    border: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: #db3643;
+}
+
+.d-right-left {
+    width: 40%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    padding: 2rem 0 10rem 1rem;
+}
+
+.d-right-right {
+    width: 60%
+}
+
+.d-right-lower {
+    width: 37%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+
+/* .d-right-left,
+.d-right-right {
+    width: 60%;
+    height: 50%;
+} */
+
+.d-meets {
+    height: 90%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.d-new-meet,
+.d-schedule-meet,
+.d-join-meet {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 75%;
+    color: white;
+    font-weight: lighter;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
+.d-new-meet {
+    background-color: #852028;
+}
+
+.d-schedule-meet,
+.d-join-meet {
+    background-color: #db3643;
+}
+
+.d-upcoming {
+    height: 80%;
+    width: 85%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.d-meetings {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.d-meeting {
+    height: 40%;
+    width: 80%;
+    background-color: rgb(250, 235, 235);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-menu {
+    border-radius: 1.25rem!important;
+    padding: 1rem !important;
+}
+
+.join-area {
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.join-image {
+    width: 100%;
+    padding-top: 1.8rem;
+}
+
+.join-btn {
+    display: flex;
+    margin: 0 4rem 4rem 0;
+    align-self: end;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.lower-section {
+    display: flex;
+    height: 60%;
+    width: 100%
+}
+
+.meeting-area::placeholder {
+    color: red;
+}
+
+.mobile-size {
+    display: none;
+}
+
+.text-field {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 40%;
+}
+
+@media (max-width: 960px) {
+    .desktop-size {
+        display: none;
+    }
+    .join-btn-mobile {
+        width: 95%;
+        text-align: center!important;
+        font-size: 1.2rem !important;
+        border-radius: 10px !important;
+    }
+    .text-field-mobile {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: 33%;
+        margin-top: 8rem;
+    }
+    .mobile-size {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100vw;
+        height: 103vh;
+    }
+    .mobile-upper {
+        color: #db3643;
+        width: 100%;
+        height: 15%;
+        display: flex;
+        align-items: start;
+        justify-content: space-around;
+    }
+    .m-search {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px;
+    }
+    .mobile-middle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+        height: 60%;
+    }
+    .m-new-meet,
+    .m-schedule-meet,
+    .m-join-meet {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 30%;
+        width: 100%;
+        color: white;
+        font-weight: lighter;
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .m-new-meet {
+        background-color: #852028;
+    }
+    .m-schedule-meet,
+    .m-join-meet {
+        background-color: #db3643;
+    }
+    .mobile-bottom {
+        display: flex;
+        color: white;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 15%;
+        background-color: #db3643;
+        border-radius: 2.5rem 2.5rem 0 0;
+        align-self: flex-end;
+    }
+}
