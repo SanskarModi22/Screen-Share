@@ -8,7 +8,35 @@ const fs = require("fs");
 const io = require("socket.io")(server, {
     allowEIO3: true, // false by default
 });
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "")));
+app.get('/', (req, res) => {
+    res.render('index')
+})
+app.get('/home', (req, res) => {
+    res.render('home')
+})
+app.get('/join', (req, res) => {
+    res.render('join')
+})
+app.get('/meeting', (req, res) => {
+    res.render('meeting')
+})
+app.get('/more', (req, res) => {
+    res.render('more')
+})
+app.get('/new-meeting', (req, res) => {
+    res.render('new-meeting')
+})
+app.get('/participant-mobile', (req, res) => {
+    res.render('participant-mobile')
+})
+app.get('/privacy-web', (req, res) => {
+    res.render('privacy-web')
+})
+app.get('/about-web', (req, res) => {
+    res.render('about-web')
+})
 var userConnections = [];
 io.on("connection", (socket) => {
     console.log("Socket Id is", socket.id);

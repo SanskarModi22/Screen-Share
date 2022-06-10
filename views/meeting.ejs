@@ -23,14 +23,14 @@
             console.log(user_name);
             if (meeting_id == null) {
                 alert("Room id is missing");
-                var meetingUrl = window.location.origin + "/views/join.html";
+                var meetingUrl = window.location.origin + "/join";
                 window.location.replace(meetingUrl);
                 return;
             } else if (user_name == null) {
                 alert("User name is missing");
                 var meetingUrl =
                     window.location.origin +
-                    "/views/join.html" +
+                    "/join" +
                     "?meetingID=" +
                     meeting_id;
                 window.location.replace(meetingUrl);
@@ -58,7 +58,7 @@
                 <h3>Screen Sharing</h3>
             </div>
             <div class="d-left-middle">
-                <a href="./home.html"><i class="fa-solid fa-house fa-2x"></i></a>
+                <a href="/home"><i class="fa-solid fa-house fa-2x"></i></a>
             </div>
             <div class="d-left-lower">
                 <div class="dropdown">
@@ -68,7 +68,7 @@
                             <span class="material-icons" style="color: red">info</span
                 ><a
                   class="dropdown-item"
-                  href="./about-web.html"
+                  href="/about-web"
                   style="color: red !important"
                   >About</a
                 >
@@ -77,7 +77,7 @@
                 <span class="material-icons" style="color: red">task</span
                 ><a
                   class="dropdown-item"
-                  href="./privacy-web.html"
+                  href="/privacy-web"
                   style="color: red !important"
                   >Privacy Policy</a
                 >
@@ -307,7 +307,7 @@
             var user_name = urlParams.get("name");
             var meetingUrl =
                 window.location.origin +
-                "/views/participant-mobile.html" +
+                "/participant-mobile" +
                 "?meetingID=" +
                 meeting_id +
                 "&name=" +

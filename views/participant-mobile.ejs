@@ -23,14 +23,14 @@
             console.log(user_name);
             if (meeting_id == null) {
                 alert("Room id is missing");
-                var meetingUrl = window.location.origin + "/views/join.html";
+                var meetingUrl = window.location.origin + "/join";
                 window.location.replace(meetingUrl);
                 return;
             } else if (user_name == null) {
                 alert("User name is missing");
                 var meetingUrl =
                     window.location.origin +
-                    "/views/join.html" +
+                    "/join" +
                     "?meetingID=" +
                     meeting_id;
                 window.location.replace(meetingUrl);
@@ -81,7 +81,7 @@
                 var user_name = urlParams.get("name");
                 var meetingUrl =
                     window.location.origin +
-                    "/views/meeting.html" +
+                    "/meeting" +
                     "?meetingID=" +
                     meeting_id +
                     "&name=" +

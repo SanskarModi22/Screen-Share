@@ -14,7 +14,7 @@ $(function() {
         } else {
             var meetingUrl =
                 window.location.origin +
-                "/views/meeting.html" +
+                "/meeting" +
                 "?meetingID=" +
                 join_value +
                 "&name=" +

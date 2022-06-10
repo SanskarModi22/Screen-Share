@@ -10,10 +10,10 @@ $(function() {
         else {
             if (join_mob_name == undefined)
                 var meetingUrl =
-                    window.location.origin + "/views/meeting.html" + "?meetingID=" + eight_d_value + "&name=" + join_name;
+                    window.location.origin + "/meeting" + "?meetingID=" + eight_d_value + "&name=" + join_name;
             else
                 var meetingUrl =
-                    window.location.origin + "/views/meeting.html" + "?meetingID=" + eight_d_value + "&name=" + join_mob_name;
+                    window.location.origin + "/meeting" + "?meetingID=" + eight_d_value + "&name=" + join_mob_name;
             window.location.replace(meetingUrl);
         }
     });

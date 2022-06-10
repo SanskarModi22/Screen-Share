@@ -404,7 +404,7 @@ var MyApp = (function() {
         // const urlParams = new URLSearchParams(window.location.search);
         // var meeting_id = urlParams.get("meetingID");
         // var meetingUrl =
-        //     window.location.origin + "/views/join.html" + "?meetingID=" + meeting_id;
+        //     window.location.origin + "/join" + "?meetingID=" + meeting_id;
         // $(".meeting_url").text(meetingUrl);
         event_process_for_signaling_server();
         eventHandeling();
@@ -705,7 +705,7 @@ var MyApp = (function() {
             })
 
         .html(
-            ' <div class="end-card d-flex flex-column justify-content-evenly align-content-center"><div class="btn btn-danger end-btns leave-all">End Meeting For All</div><a href="./new-meeting.html"><div class="call-leave-action btn btn-dark end-btns">Leave Meeting</div></a><div class="call-cancel-action btn btn-dark end-btns">Cancel</div></div>'
+            ' <div class="end-card d-flex flex-column justify-content-evenly align-content-center"><div class="btn btn-danger end-btns leave-all">End Meeting For All</div><a href="/new-meeting"><div class="call-leave-action btn btn-dark end-btns">Leave Meeting</div></a><div class="call-cancel-action btn btn-dark end-btns">Cancel</div></div>'
         );
     });
     $(document).mouseup(function(e) {
@@ -727,7 +727,7 @@ var MyApp = (function() {
         for (var i = 0; i < allUsers.length; i++) {
             $("#" + allUsers[i]).remove();
         }
-        var meetingUrl = window.location.origin + "/views/new-meeting.html";
+        var meetingUrl = window.location.origin + "/new-meeting";
         window.location.replace(meetingUrl);
         return;
     });
@@ -739,7 +739,7 @@ var MyApp = (function() {
             const urlParams = new URLSearchParams(window.location.search);
             var meeting_id = urlParams.get("meetingID");
             var meetingUrl =
-                window.location.origin + "/views/join.html" + "?meetingID=" + meeting_id;
+                window.location.origin + "/join" + "?meetingID=" + meeting_id;
             $(".meeting_url").text(meetingUrl);
             var $temp = $("<input>");
             $("body").append($temp);
@@ -760,7 +760,7 @@ var MyApp = (function() {
             const urlParams = new URLSearchParams(window.location.search);
             var meeting_id = urlParams.get("meetingID");
             var meetingUrl =
-                window.location.origin + "/views/join.html" + "?meetingID=" + meeting_id;
+                window.location.origin + "/join" + "?meetingID=" + meeting_id;
             $(".meeting_url_Mob").text(meetingUrl);
             var $temp = $("<input>");
             $("body").append($temp);
