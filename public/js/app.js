@@ -509,11 +509,11 @@ var MyApp = (function() {
                 $("video").addClass("video-size");
                 if (elmId != "localPin") var subStr = elmId.substring(4);
                 else subStr = "locaVideoPlayer";
-                alert(subStr);
+                // alert(subStr);
                 $("#me").hide();
                 for (var i = 0; i < allUsers.length; i++) {
                     $("#" + allUsers[i]).hide();
-                    alert(allUsers[i]);
+                    // alert(allUsers[i]);
                 }
                 if (subStr != "locaVideoPlayer") {
                     $("#" + subStr).show();
@@ -534,12 +534,12 @@ var MyApp = (function() {
             var elmId = $(this).attr("id");
             if (elmId != "locaVideoPlayer") var subStr = elmId.substring(2);
             else subStr = "locaVideoPlayer";
-            alert(subStr);
+            // alert(subStr);
             $("#me").hide();
             for (var i = 0; i < allUsers.length; i++) {
                 if (allUsers[i] != subStr) {
                     $("#" + allUsers[i]).hide();
-                    alert(allUsers[i]);
+                    // alert(allUsers[i]);
                 }
             }
             if (subStr != "locaVideoPlayer") {
@@ -561,12 +561,12 @@ var MyApp = (function() {
             var elmId = $(this).attr("id");
             if (elmId != "locaVideoPlayerMob") var subStr = elmId.substring(2);
             else subStr = "locaVideoPlayerMob";
-            alert(subStr);
+            // alert(subStr);
             $("#meMob").hide();
             for (var i = 0; i < allUsers.length; i++) {
                 if (allUsers[i] != subStr) {
                     $("#" + allUsers[i] + "Mob").hide();
-                    alert(allUsers[i]);
+                    // alert(allUsers[i]);
                 }
             }
             if (subStr != "locaVideoPlayerMob") {
@@ -596,7 +596,7 @@ var MyApp = (function() {
                     allUsers[i] +
                     '"> push_pin </span>'
                 );
-                alert(allUsers[i]);
+                // alert(allUsers[i]);
             }
             $("#stop-screen-sharing").hide();
         });
@@ -614,7 +614,7 @@ var MyApp = (function() {
                     allUsers[i] +
                     '"> push_pin </span>'
                 );
-                alert(allUsers[i]);
+                // alert(allUsers[i]);
             }
             $("#stop-screen-sharing-Mob").hide();
         });
