@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="https://kit.fontawesome.com/84c4a0d090.js" crossorigin="anonymous"></script>
+    <script src="../public/js/date.js"></script>
     <title>Document</title>
 </head>
 
@@ -48,7 +49,7 @@
             </button>
                 </div>
                 <div class="d-profile-pic">
-                    <img src=" " alt="profile-pic " />
+                    <img src="../public/images/other.jpg" alt="profile-pic" width="40rem" height="40rem" />
                 </div>
             </div>
             <div class="d-right-lower">
@@ -66,15 +67,15 @@
                                 <h3 style="font-weight: lighter;font-size: 1.17rem;">JOIN MEETING</h3>
                             </div>
                         </a>
-                        <div class="d-schedule-meet">
+                        <!-- <div class="d-schedule-meet">
                             <div><i class="fa-solid fa-calendar-days fa-2x"></i></div>
                             <div>
                                 <h3 style="font-weight: lighter;font-size: 1.17rem;">SCHEDULE MEETING</h3>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="d-right-right">
+                <!-- <div class="d-right-right">
                     <div class="d-upcoming">
                         <h1 style="font-weight: lighter; color: #db3643;font-size: 2rem;">
                             Upcoming Meetings,
@@ -119,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -147,12 +148,12 @@
                         <h3 style="font-weight: lighter">JOIN MEETING</h3>
                     </div>
                 </a>
-                <div class="m-schedule-meet">
+                <!-- <div class="m-schedule-meet">
                     <div><i class="fa-solid fa-calendar-days fa-2x"></i></div>
                     <div>
                         <h3 style="font-weight: lighter">SCHEDULE MEETING</h3>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="mobile-bottom">
@@ -163,6 +164,31 @@
             </div>
         </div>
     </div>
+    <script>
+        var today = new Date();
+        // today = today.toDateString();
+        var day = today.toString().substr(0, 3);
+        var month = today.toString().substr(4, 3);
+        var date = today.getDate();
+        var year = today.getFullYear() - 2000;
+        var sub = "th";
+        if (date == 1)
+            sub = "st";
+        if (date == 2)
+            sub = "nd";
+        if (date == 3)
+            sub = "rd";
+        var datetext = day + "," + date + sub + " " + month + "\'" + year;
+        var time;
+        // console.log(datetext);
+        if (today.getMinutes() < 10)
+            time =
+            today.getHours() + ":" + "0" + today.getMinutes();
+        else
+            time = today.getHours() + ":" + today.getMinutes();
+        document.querySelector(".desktop-right .d-right-upper .d-time b").innerHTML = time;
+        document.querySelector(".desktop-right .d-right-upper .d-date b").innerHTML = datetext;
+    </script>
 </body>
 
 </html>

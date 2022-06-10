@@ -651,7 +651,7 @@ var MyApp = (function() {
         $(".in-call-wrap-up").append(
             '<div class="in-call-wrap d-flex justify-content-between align-items-center mb-3" id="participant_' +
             connId +
-            '"> <div class="participant-img-name-wrap display-center cursor-pointer d-flex justify-content-center align-items-center p-1"> <div class="participant-img"> <img src="public/Assets/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ms-2"> ' +
+            '"> <div class="participant-img-name-wrap display-center cursor-pointer d-flex justify-content-center align-items-center p-1"> <div class="participant-img"> <img src="../public/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ms-2"> ' +
             other_user_id +
             '</div> </div> <div class="participant-action-wrap display-center" style="cursor:pointer;"><div class="participant-action-pin display-center mr-2 cursor-pointer"> <span class="material-icons" id="pin_' +
             connId +
@@ -660,7 +660,7 @@ var MyApp = (function() {
         $(".mobile-middle .in-call-wrap-up-Mob").append(
             '<div class="in-call-wrap-Mob d-flex justify-content-between align-items-center mb-3" id="participantMob_' +
             connId +
-            '"> <div class="participant-img-name-wrap display-center cursor-pointer d-flex justify-content-center align-items-center p-1"> <div class="participant-img"> <img src="public/Assets/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ms-2"> ' +
+            '"> <div class="participant-img-name-wrap display-center cursor-pointer d-flex justify-content-center align-items-center p-1"> <div class="participant-img"> <img src="../public/images/other.jpg" alt="" class="border border-secondary" style="height: 40px;width: 40px;border-radius: 50%;"> </div> <div class="participant-name ms-2"> ' +
             other_user_id +
             '</div> </div> <div class="participant-action-wrap display-center" style="cursor:pointer;"><div class="participant-action-pin display-center mr-2 cursor-pointer"> <span class="material-icons" id="pinMob_' +
             connId +

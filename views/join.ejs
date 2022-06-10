@@ -52,7 +52,7 @@
             </button>
                 </div>
                 <div class="d-profile-pic">
-                    <img src="" alt="profile-pic" />
+                    <img src="../public/images/other.jpg" alt="profile-pic" width="40rem" height="40rem" />
                 </div>
             </div>
             <div class="lower-section ">
@@ -123,6 +123,31 @@
             </div>
         </div>
     </div>
+    <script>
+        var today = new Date();
+        // today = today.toDateString();
+        var day = today.toString().substr(0, 3);
+        var month = today.toString().substr(4, 3);
+        var date = today.getDate();
+        var year = today.getFullYear() - 2000;
+        var sub = "th";
+        if (date == 1)
+            sub = "st";
+        if (date == 2)
+            sub = "nd";
+        if (date == 3)
+            sub = "rd";
+        var datetext = day + "," + date + sub + " " + month + "\'" + year;
+        var time;
+        // console.log(datetext);
+        if (today.getMinutes() < 10)
+            time =
+            today.getHours() + ":" + "0" + today.getMinutes();
+        else
+            time = today.getHours() + ":" + today.getMinutes();
+        document.querySelector(".desktop-right .d-right-upper .d-time b").innerHTML = time;
+        document.querySelector(".desktop-right .d-right-upper .d-date b").innerHTML = datetext;
+    </script>
 </body>
 
 </html>
