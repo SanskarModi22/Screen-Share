@@ -1,12 +1,13 @@
 const express = require("express");
+require("dotenv").config();
 const path = require("path");
 var app = express();
 const session = require("express-session");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const GOOGLE_CLIENT_ID =
-    "16991111818-5bgc9u9vhsm69rg3bfm92ih4lpm6vv63.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+    process.env.Google_Client;
+const GOOGLE_CLIENT_SECRET = process.env.Google_Secret;
 var userProfile;
 app.set("view engine", "ejs");
 app.use(
