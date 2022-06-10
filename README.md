@@ -1,2 +1,12 @@
 # Screen-Share
-This is a Screen Sharing application made using HTML,CSS,JS,JQuery,WebRTC,Socket.io,NodeJS
+This is a Screen Sharing application made for both Mobile and Web version.
+
+## Tech Stack Used
+
+- HTML
+- CSS 
+- JS
+- JQuery
+- WebRTC
+- Socket.io 
+- NodeJS
