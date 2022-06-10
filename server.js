@@ -1,42 +1,100 @@
 const express = require("express");
 const path = require("path");
 var app = express();
-var server = app.listen(4000, function() {
+const session = require("express-session");
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+const GOOGLE_CLIENT_ID =
+    "16991111818-5bgc9u9vhsm69rg3bfm92ih4lpm6vv63.apps.googleusercontent.com";
+const GOOGLE_CLIENT_SECRET = "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";
+var userProfile;
+app.set("view engine", "ejs");
+app.use(
+    session({
+        resave: false,
+        saveUninitialized: true,
+        secret: "SECRET",
+    })
+);
+app.use(express.static(path.join(__dirname, "")));
+app.get("/", (req, res) => {
+    res.render("index");
+});
+app.get("/home", (req, res) => {
+    res.render("home", { user: userProfile });
+});
+app.get("/join", (req, res) => {
+    res.render("join");
+});
+app.get("/meeting", (req, res) => {
+    res.render("meeting");
+});
+app.get("/more", (req, res) => {
+    res.render("more");
+});
+app.get("/new-meeting", (req, res) => {
+    res.render("new-meeting");
+});
+app.get("/participant-mobile", (req, res) => {
+    res.render("participant-mobile");
+});
+app.get("/privacy-web", (req, res) => {
+    res.render("privacy-web");
+});
+app.get("/about-web", (req, res) => {
+    res.render("about-web");
+});
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, cb) {
+    cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+    cb(null, obj);
+});
+
+passport.use(
+    new GoogleStrategy({
+            clientID: GOOGLE_CLIENT_ID,
+            clientSecret: GOOGLE_CLIENT_SECRET,
+            callbackURL: "http://localhost:4000/auth/google/callback",
+        },
+        function(accessToken, refreshToken, profile, done) {
+            userProfile = profile;
+            console.log(userProfile);
+            return done(null, userProfile);
+        }
+    )
+);
+
+app.get("/error", (req, res) => res.send("error logging in"));
+app.get(
+    "/auth/google",
+    passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/error" }),
+    function(req, res) {
+        // Successful authentication, redirect success.
+        // console.log(`User Profile is ${userProfile.displayName}`)
+        // res.render('/home', { user: userProfile });
+        res.redirect("/home");
+    }
+);
+
+const port = process.env.PORT || 4000;
+var server = app.listen(port, function() {
     console.log("Listening on port 4000");
 });
-const fs = require("fs");
 const io = require("socket.io")(server, {
     allowEIO3: true, // false by default
 });
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, "")));
-app.get('/', (req, res) => {
-    res.render('index')
-})
-app.get('/home', (req, res) => {
-    res.render('home')
-})
-app.get('/join', (req, res) => {
-    res.render('join')
-})
-app.get('/meeting', (req, res) => {
-    res.render('meeting')
-})
-app.get('/more', (req, res) => {
-    res.render('more')
-})
-app.get('/new-meeting', (req, res) => {
-    res.render('new-meeting')
-})
-app.get('/participant-mobile', (req, res) => {
-    res.render('participant-mobile')
-})
-app.get('/privacy-web', (req, res) => {
-    res.render('privacy-web')
-})
-app.get('/about-web', (req, res) => {
-    res.render('about-web')
-})
 var userConnections = [];
 io.on("connection", (socket) => {
     console.log("Socket Id is", socket.id);
@@ -58,7 +116,7 @@ io.on("connection", (socket) => {
         other_users.forEach((v) => {
             socket.to(v.connectionId).emit("inform_others_about_me", {
                 other_user_id: data.displayName, //Sending our name
-                connId: socket.id, //We are sending our socket connid 
+                connId: socket.id, //We are sending our socket connid
                 userNumber: userCount,
             });
         });
