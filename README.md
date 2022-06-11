@@ -3,7 +3,7 @@ This is a Screen Sharing application made for both Mobile and Web version.
 
 ## Tech Stack Used
 
-- HTML
+- Ejs
 - CSS 
 - JS
 - JQuery
